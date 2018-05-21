@@ -5,7 +5,7 @@ module.exports = {
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'public', 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   module: {
     rules: [
@@ -16,21 +16,21 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['env', 'react'],
-            plugins: ['transform-class-properties', 'transform-object-rest-spread']
-          }
-        }
+            plugins: ['transform-class-properties', 'transform-object-rest-spread'],
+          },
+        },
       },
       {
         test: /\.s?css$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        })
-      }
-    ]
+          use: ['css-loader', 'sass-loader'],
+        }),
+      },
+    ],
   },
   plugins: [
-    new ExtractTextPlugin('styles.css')
+    new ExtractTextPlugin('styles.css'),
   ],
   devtool: 'source-map',
   devServer: {
@@ -39,7 +39,7 @@ module.exports = {
     historyApiFallback: true,
     proxy: [{
       context: [/* define routes to redirect here. ex: /api/* */],
-      target: 'http://localhost:5000'
-    }]
-  }
-}
+      target: 'http://localhost:5000',
+    }],
+  },
+};
